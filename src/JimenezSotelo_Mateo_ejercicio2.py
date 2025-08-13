@@ -3,7 +3,7 @@ import random
 class gen():
     # Constructor
     def __init__(self, inicio, fin, secuencia, organismo, funcion='desconocida') -> None:
-        self.longitud = fin - inicio
+        self.longitud = fin - inicio + 1 # Por slicing en python
         self.inicio = inicio
         self.fin = fin
         self.secuencia = secuencia.strip().upper() # todo en mayúsculas
@@ -21,4 +21,6 @@ class gen():
     
 gen_prueba = gen(322, 456, ''.join(random.choice(['A', 'T', 'C', 'G']) for _ in range(34)), 'Humano')
 
-
+codones_seq = gen_prueba.codones(2)
+print(f'Secuencia del gen: {gen_prueba.secuencia}\nCodones: {codones_seq}') # Segundo marco de lectura
+print(f'Codón de paro: {gen_prueba.codon_paro(codones_seq)}\nContendo de GC: {gen_prueba.contenido_gc()}%')
